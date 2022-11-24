@@ -5,6 +5,7 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
+import pages.Fatih_Page;
 
 import java.io.File;
 import java.io.IOException;
@@ -227,6 +228,15 @@ public class ReusableMethods {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+    public static void loginMethod(){
+        Fatih_Page fatih_page=new Fatih_Page();
+        Driver.getDriver().get(ConfigReader.getProperty("url"));
+        fatih_page.signInDropDown.click();
+        fatih_page.signInButton.click();
+        fatih_page.username.sendKeys("team08");
+        fatih_page.password.sendKeys("12345");
+        fatih_page.signInButton2.click();
     }
 }
 
