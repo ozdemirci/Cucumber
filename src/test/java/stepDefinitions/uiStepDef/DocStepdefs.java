@@ -1,4 +1,4 @@
-package utilities;
+package stepDefinitions.uiStepDef;
 
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
@@ -11,6 +11,9 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import pages.US10_Page;
+import utilities.ConfigReader;
+import utilities.Driver;
+import utilities.ReusableMethods;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -18,7 +21,7 @@ import java.awt.event.KeyEvent;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class MedunnaDocStepdefs {
+public class DocStepdefs {
     US10_Page page = new US10_Page();
     Actions actions = new Actions(Driver.getDriver());
     String password;
@@ -26,7 +29,7 @@ public class MedunnaDocStepdefs {
 
     @Given("doktor medunna ana sayfasina gider")
     public void doktorMedunnaAnaSayfasinaGider() {
-        Driver.getDriver().get(ConfigReader.getProperty("BaseUrl"));
+        Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
     }
 
     @When("doktor signin sekmesine tiklar")
