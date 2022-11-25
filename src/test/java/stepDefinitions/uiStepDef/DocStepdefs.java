@@ -134,6 +134,7 @@ public class DocStepdefs {
     @Then("Doktor {string} mesajini gorunur oldugunu dogrular")
     public void doktorMesajiniGorunurOldugunuDogrular(String str) {
        assertEquals(ConfigReader.getProperty("approveMessageClass"),page.docAppointmentApprove.getAttribute("class"));
+
     }
 
     @And("doktor anemnesis, treatment, diagnosis bolumlerini bos birakir")

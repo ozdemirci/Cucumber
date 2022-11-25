@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions (
         features="src/test/resources/features",
         glue="stepDefinitions",
-        tags="@US_027_TC03",
+        tags="@US11_TC01",
         dryRun= false)
 
 public class Runner {
