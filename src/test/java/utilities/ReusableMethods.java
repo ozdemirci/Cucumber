@@ -238,5 +238,11 @@ public class ReusableMethods {
         fatih_page.password.sendKeys("12345");
         fatih_page.signInButton2.click();
     }
+    public static String  getValueWithJs(String elementId) {
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        String value = js.executeScript("return document.getElementId('" + elementId + "').value").toString();
+        return value;
+
+    }
 }
 
