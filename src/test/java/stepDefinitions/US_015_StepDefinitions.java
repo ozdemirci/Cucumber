@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 import pages.DonePages;
 import utilities.ConfigReader;
 import utilities.Driver;
@@ -13,6 +14,7 @@ import utilities.ReusableMethods;
 
 public class US_015_StepDefinitions {
     DonePages done = new DonePages();
+    Actions actions = new Actions(Driver.getDriver());
 
 
     @Given("Admin medunnaUrl ine gider")
@@ -100,6 +102,39 @@ public class US_015_StepDefinitions {
     @And("Personel items&Titles seceneginin olmadigini dogrular")
     public void personelItemsTitlesSecenegininOlmadiginiDogrular() {
         Assert.assertFalse(done.personelElaIslemMenu.getText().contains("Items&Titles"));
+    }
+
+    @And("Hasta sing out yapar")
+    public void hastaSingOutYapar() {
+        done.hastaRoleicon.click();
+        done.SingOut.click();
+    }
+
+
+    @And("Doktor sing out yapar")
+    public void doktorSingOutYapar() {
+        done.doktorRoleicon.click();
+        done.SingOut.click();
+    }
+
+    @And("User sing out yapar")
+    public void userSingOutYapar() {
+        done.userRoleicon.click();
+        done.SingOut.click();
+    }
+
+    @And("Admin sing out yapar")
+    public void adminSingOutYapar() {
+        done.adminRoleicon.click();
+        done.SingOut.click();
+
+
+    }
+
+    @And("Personel sing out yapar")
+    public void personelSingOutYapar() {
+        done.personelRoleicon.click();
+        done.SingOut.click();
     }
 
     //TC03
@@ -208,7 +243,7 @@ public class US_015_StepDefinitions {
         Assert.assertTrue(done.AdminPatientSWebTable.isDisplayed());
     }
 
-
+//TC11
     @And("Admin Patiens sayfasinda en sagdaki sutunlarda View-Edit-Delete seceneklerini dogrular")
     public void adminPatiensSayfasindaEnSagdakiSutunlardaViewEditDeleteSecenekleriniDogrular() {
         Assert.assertTrue(done.PatientsWievEditDeleteButton.isDisplayed());
@@ -217,63 +252,35 @@ public class US_015_StepDefinitions {
 
     @And("Admin Patients sayfasinda bir hasta belirler")
     public void adminPatientsSayfasindaBirHastaBelirler() {
-        ReusableMethods.jshover(done.AdminPatientSOlduguSayfa);
-        ReusableMethods.jsclick(done.AdminPatientSOlduguSayfa);
+    done.AdminPatientSTestHastasi.click();
 
     }
 
     @And("Admin belirledigi hastanin Delete secenegine tiklar")
     public void adminBelirledigiHastaninDeleteSecenegineTiklar() {
-        done.AdminPatientSDexterDeleteButton.click();
+        done.AdminPatientSDeleteButton.click();
     }
 
     @And("Admin Confirm delete operation ekraninin acildigini dogrular")
     public void adminConfirmDeleteOperationEkranininAcildiginiDogrular() {
-        Assert.assertTrue(done.AdminConfirmDeleteOperationsAlert.isDisplayed());
+      //String ConfirmMessage = Driver.getDriver().switchTo().alert().getText();
+      Assert.assertTrue(done.AdminConfirmDeleteOperationsAlert.getCssValue("class").contains("Confirm delete operation"));
     }
 
     @And("Admin Confirm delete operation ekraninda Delete butonuna tiklar")
     public void adminConfirmDeleteOperationEkranindaDeleteButonunaTiklar() {
-        done.AdminPatientSDexterDeleteButton.click();
+      //  Driver.getDriver().switchTo().alert().accept();
+        ReusableMethods.jsclick(done.AdminPatientSDeleteButton);
     }
 
-    @And("Admin onay mesajini dogrular")
-    public void adminOnayMesajiniDogrular() {
+    @And("Admin hasta silme onay mesajini dogrular")
+    public void adminOnayMesajiniDogrular()
+    {
         Assert.assertTrue(done.AdminDeleteOnayMesaji.isDisplayed());
     }
 
-    @And("Admin sing out yapar")
-    public void adminSingOutYapar() {
-        done.adminRoleicon.click();
-        done.SingOut.click();
 
 
-    }
-
-    @And("Personel sing out yapar")
-    public void personelSingOutYapar() {
-done.personelRoleicon.click();
-done.SingOut.click();
-    }
-
-    @And("Hasta sing out yapar")
-    public void hastaSingOutYapar() {
-        done.hastaRoleicon.click();
-        done.SingOut.click();
-    }
-
-
-    @And("Doktor sing out yapar")
-    public void doktorSingOutYapar() {
-        done.doktorRoleicon.click();
-        done.SingOut.click();
-    }
-
-    @And("User sing out yapar")
-    public void userSingOutYapar() {
-        done.userRoleicon.click();
-        done.SingOut.click();
-    }
 }
 
 

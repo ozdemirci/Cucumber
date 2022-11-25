@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
@@ -47,19 +48,17 @@ public class DonePages {
 
     @FindBy(xpath = "//span[text()='Create or edit a Patient']") public WebElement AdminCreateOrCreaditPatientText;
     @FindBy(xpath = "//table/thead/tr") public WebElement AdminPatientSWebTable;
-    @FindBy(xpath = "//a[text()='332']") public WebElement AdminPatientSOlduguSayfa;
-    /*Düzenleme ve silinecek hasta işlem yapılan hasta bigileri
-     * Dexter Morgan id 326834 ssn 358-65-3578
-     * dg 23/01/00 00:00	tel 111-111-1111	mail dextermorgan@gmail.com	gender MALE
-     * kan grubu A+	adres 1234.cd Ankara/Turkey	Desciriptions Kan Analisti
-     * creadet date 23/11/22 13:25	user jonnyjones	 country USA state bos
-     * */
-    @FindBy (xpath = "(//div[@class='btn-group flex-btn-group-container'])[2]") public WebElement PatientsWievEditDeleteButton;
-    @FindBy(xpath = "(//span[text()='Delete'])[2]") public WebElement AdminPatientSDexterDeleteButton;
-    @FindBy(xpath = "(//span[text()='Edit'])[2]") public WebElement AdminPatientSDexterEditButton;
-    @FindBy(xpath = "(//span[text()='View'])[2]") public WebElement AdminPatientSDexterWiewButton;
-    @FindBy(xpath = "//span[text()='Confirm delete operation']") public WebElement AdminConfirmDeleteOperationsAlert;
-    @FindBy(xpath = "//div[@class='Toastify__toast-body']']") public WebElement AdminDeleteOnayMesaji;
+    @FindBy(xpath = "//div/table/tbody/tr[1]") public WebElement AdminPatientSTestHastasi;
+   //silme bölümü
+    @FindBy (xpath = "(//div[@class='btn-group flex-btn-group-container'])[1]") public WebElement PatientsWievEditDeleteButton;
+    @FindBy(xpath = "(//span[text()='Delete'])[1]") public WebElement AdminPatientSDeleteButton;
+    @FindBy(xpath = "(//span[text()='Edit'])[1]") public WebElement AdminPatientSEditButton;
+    @FindBy(xpath = "(//span[text()='View'])[1]") public WebElement AdminPatientSWiewButton;
+   // String ConfirmMessage = Driver.getDriver().switchTo().alert().getText();
+    @FindBy(xpath = "//span[text()='Confirm delete operation']") public WebElement AdminConfirmDeleteOperationsAlert;//class olarak al.valusunu göster.
+    @FindBy(xpath = "//button[@id='jhi-confirm-delete-patient']") public WebElement AdminConfirmDeleteButton;
+
+    @FindBy(xpath = "//div[@class='Toastify__toast-body']") public WebElement AdminDeleteOnayMesaji;
 
 
     //Doktor atama ile ilgili kısımlar
@@ -72,6 +71,32 @@ public class DonePages {
     @FindBy(xpath = "//span[text()='Rooms']") public WebElement adminRooms;
     @FindBy(xpath = "//span[text()='Create a new Room']") public WebElement adminCreateANewRoomsButton;
     @FindBy(xpath = "//h2[@id='hospitalmsappfrontendApp.room.home.createOrEditLabel']") public WebElement adminCreateorEditRoomPage;
+    @FindBy(xpath = "//input[@id='room-roomNumber']") public WebElement roomNumberBox;
+    @FindBy(xpath = "//input[@name='price']") public WebElement roomPriceBox;
+    @FindBy(xpath = "//input[@id='room-description']]") public WebElement roomDesciriptionsBox;
+
+    @FindBy(xpath = "(//div[text()='This field is required.'])[2]") public WebElement roomPriceBosBirakilamazHataMesaji;
+    @FindBy(xpath = "//div[text()='This field should be at least 0.']") public WebElement roomPriceSozelOzelNegatifDegerHataMesaji;
+
+    @FindBy(xpath = "//select[@id='room-roomType']") public WebElement roomTypeBox;
+    @FindBy(xpath = "//select[@id='room-roomType']//option") public WebElement roomTypeDropDown;
+    @FindBy(xpath = "//div[text()='This field is required.']") public WebElement roomNumberBosOlmazHataMesaji;
+    @FindBy(xpath = "//div[text()='This field should be a number.']") public WebElement roomNumberSozelOzelkarakterHataMesaji;
+    @FindBy(xpath = "//input[@type='checkbox']") public WebElement roomStatusSecme;
+    @FindBy(xpath = "//button[@id='save-entity']") public WebElement roomSaveButton;
+    @FindBy(xpath = "//*[@id=\"app-view-container\"]/div/div/div/div/div[1]/div/table/thead/tr/th[3]") public WebElement RoomsRoomTypeHead;
+    @FindBy(xpath = "(//div[@class='btn-group flex-btn-group-container'])[1]") public WebElement RoomsWiewEditDeleteButtonlari;
+    @FindBy(xpath = "(//span[text()='Delete'])[1]") public WebElement RoomsDeleteButton;
+    @FindBy(xpath = "(//span[text()='Edit'])[1]") public WebElement RoomsEditButton;
+    @FindBy(xpath = "(//span[text()='View'])[1]") public WebElement RoomsViewButton;
+    @FindBy(xpath = "//span[text()='Confirm delete operation']") public WebElement RoomsConfirmDeleteAlert;
+    @FindBy(xpath = "(//span[text()='Delete'])[21]") public WebElement RoomsConfirmDeleteButton;
+    @FindBy(xpath = "//div/table/tbody/tr[1]") public WebElement RoomsTestHastasi;
+    @FindBy(xpath = "//div[@class='justify-content-center row']") public WebElement RoomsCreateEditSayfasi;
+
+
+
+
 
 
 

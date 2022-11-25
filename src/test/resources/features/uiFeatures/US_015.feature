@@ -84,4 +84,4 @@ Feature: US_15 Yeni hastalar yalnizca yonetici tarafindan olusturulabilir
     And Admin belirledigi hastanin Delete secenegine tiklar
     And Admin Confirm delete operation ekraninin acildigini dogrular
     And Admin Confirm delete operation ekraninda Delete butonuna tiklar
-    And Admin onay mesajini dogrular
+    And Admin hasta silme onay mesajini dogrular
