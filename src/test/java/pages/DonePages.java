@@ -48,14 +48,16 @@ public class DonePages {
 
     @FindBy(xpath = "//span[text()='Create or edit a Patient']") public WebElement AdminCreateOrCreaditPatientText;
     @FindBy(xpath = "//table/thead/tr") public WebElement AdminPatientSWebTable;
-    @FindBy(xpath = "//div/table/tbody/tr[1]") public WebElement AdminPatientSTestHastasi;
+    @FindBy(xpath = "//div/table/tbody/tr[8]") public WebElement AdminPatientSTestHastasi;
+    @FindBy(xpath = "//a[text()='341211']") public WebElement AdminPatientDexterİd;
+
    //silme bölümü
     @FindBy (xpath = "(//div[@class='btn-group flex-btn-group-container'])[1]") public WebElement PatientsWievEditDeleteButton;
     @FindBy(xpath = "(//span[text()='Delete'])[1]") public WebElement AdminPatientSDeleteButton;
     @FindBy(xpath = "(//span[text()='Edit'])[1]") public WebElement AdminPatientSEditButton;
     @FindBy(xpath = "(//span[text()='View'])[1]") public WebElement AdminPatientSWiewButton;
-   // String ConfirmMessage = Driver.getDriver().switchTo().alert().getText();
-    @FindBy(xpath = "//span[text()='Confirm delete operation']") public WebElement AdminConfirmDeleteOperationsAlert;//class olarak al.valusunu göster.
+
+    @FindBy(xpath = "//h5[@class='modal-title']") public WebElement AdminConfirmDeleteOperationsAlert;//class olarak al.valusunu göster.
     @FindBy(xpath = "//button[@id='jhi-confirm-delete-patient']") public WebElement AdminConfirmDeleteButton;
 
     @FindBy(xpath = "//div[@class='Toastify__toast-body']") public WebElement AdminDeleteOnayMesaji;
@@ -93,6 +95,12 @@ public class DonePages {
     @FindBy(xpath = "(//span[text()='Delete'])[21]") public WebElement RoomsConfirmDeleteButton;
     @FindBy(xpath = "//div/table/tbody/tr[1]") public WebElement RoomsTestHastasi;
     @FindBy(xpath = "//div[@class='justify-content-center row']") public WebElement RoomsCreateEditSayfasi;
+    @FindBy(xpath = "//a[text()='336']") public WebElement PatientsDexter336İcerenSayfa;
+    @FindBy(xpath = "//span[text()='Previous']") public WebElement PatientsOncekiSayfaİcon;
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 

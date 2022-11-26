@@ -1,4 +1,4 @@
-package stepDefinitions;
+package stepDefinitions.uiStepDef;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -252,7 +252,17 @@ public class US_015_StepDefinitions {
 
     @And("Admin Patients sayfasinda bir hasta belirler")
     public void adminPatientsSayfasindaBirHastaBelirler() {
-    done.AdminPatientSTestHastasi.click();
+        try {
+            done.PatientsDexter336İcerenSayfa.click();
+        } catch (Exception e) {
+            done.PatientsOncekiSayfaİcon.click();
+            throw new RuntimeException(e);
+        }
+        done.AdminPatientSTestHastasi.click();
+
+
+
+
 
     }
 
@@ -263,8 +273,8 @@ public class US_015_StepDefinitions {
 
     @And("Admin Confirm delete operation ekraninin acildigini dogrular")
     public void adminConfirmDeleteOperationEkranininAcildiginiDogrular() {
-      //String ConfirmMessage = Driver.getDriver().switchTo().alert().getText();
-      Assert.assertTrue(done.AdminConfirmDeleteOperationsAlert.getCssValue("class").contains("Confirm delete operation"));
+       // assertEquals("Toastify__toast-body",obje.successMessage.getAttribute("class"));
+      Assert.assertEquals("modal-title",done.AdminConfirmDeleteOperationsAlert.getAttribute("class"));
     }
 
     @And("Admin Confirm delete operation ekraninda Delete butonuna tiklar")
