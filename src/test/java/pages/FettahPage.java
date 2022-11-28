@@ -6,7 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
 public class FettahPage {
-    public FettahPage() { //Constructor oluşturup public yapmamız gerekir
+    public FettahPage() {
 
         PageFactory.initElements(Driver.getDriver(), this);
 
