@@ -244,7 +244,7 @@ public class US_015_StepDefinitions {
         Assert.assertTrue(done.AdminPatientSWebTable.isDisplayed());
     }
 
-//TC11
+  //TC11
     @And("Admin Patiens sayfasinda en sagdaki sutunlarda View-Edit-Delete seceneklerini dogrular")
     public void adminPatiensSayfasindaEnSagdakiSutunlardaViewEditDeleteSecenekleriniDogrular() {
         Assert.assertTrue(done.PatientsWievEditDeleteButton.isDisplayed());
