@@ -170,6 +170,7 @@ public class DocStepdefs {
             robot.keyRelease(KeyEvent.VK_CONTROL); //- yi birakti
             // CTRL (-) ye basılarak ekran belirlenen miktarda küçültülmüş oldu.
         }
+        ReusableMethods.waitForVisibility(page.docFirstTest,20);
 
         assertTrue(page.docFirstTest.isDisplayed());
 
@@ -213,8 +214,8 @@ public class DocStepdefs {
 
 
     @And("doktor status bolumunu {string} olarak secer")
-    public void doktorStatusBolumunuOlarakSecer(String arg0) {
+    public void doktorStatusBolumunuOlarakSecer(String status) {
         Select options=new Select(page.docAppointmentStatus);
-        options.selectByIndex(2);
+        options.selectByVisibleText(status);
     }
 }

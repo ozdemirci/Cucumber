@@ -6,7 +6,6 @@ Feature: US_010 Doktor randevulari
     And doktor gecerli username girer
     And doktor gecerli password girer
     And doktor signin butonuna tiklar
-    Then doktor giris yaptigini dogrular
     When doktor my pages sekmesine tiklar
     And doktor my appointments sekmesine tiklar
 
