@@ -1,5 +1,6 @@
 package stepDefinitions.uiStepDef;
 
+import com.github.javafaker.Faker;
 import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
 import org.junit.Assert;
@@ -18,6 +19,8 @@ import java.util.List;
 public class US_016_StepDefinitions {
     DonePages done = new DonePages();
     Actions actions = new Actions(Driver.getDriver());
+    Select select;
+    Faker faker = new Faker();
 
     @And("Admin items&Titles seceneginden Room secenegini secer")
     public void adminItemsTitlesSecenegindenRoomSeceneginiSecer() {
@@ -51,39 +54,42 @@ public class US_016_StepDefinitions {
     @And("Admin Room number sozel deger girer  ve hata mesajini alir")
     public void adminRoomNumberSozelDegerGirerVeHataMesajiniAlir() {
         done.roomNumberBox.sendKeys("abc" + Keys.ENTER);
-        Assert.assertTrue(done.roomNumberSozelOzelkarakterHataMesaji.isDisplayed());
+        Assert.assertTrue(done.roomNumberSozelOzelkarakterHataMesaji.size() !=0);
     }
 
     @And("Admin Room number ozel karakter girer  ve hata mesajini alir")
     public void adminRoomNumberOzelKarakterGirerVeHataMesajiniAlir() {
         done.roomNumberBox.sendKeys("+*///" + Keys.ENTER);
-        Assert.assertTrue(done.roomNumberSozelOzelkarakterHataMesaji.isDisplayed());
+        Assert.assertTrue(done.roomNumberSozelOzelkarakterHataMesaji.size() != 0);
     }
 
     @And("Admin Room number  Negative deger girer")
     public void adminRoomNumberNegativeDegerGirer() {
         done.roomNumberBox.sendKeys("-5000" + Keys.ENTER);
-        //Assert.assertFalse(done.roomNumberSozelOzelkarakterHataMesaji.isDisplayed());
-        // Hata mesajı görmediğini dogrulra demek istiyorum.
+        Assert.assertFalse(done.roomNumberSozelOzelkarakterHataMesaji.size() != 0);
+
     }
 
-    //TC-06          HATA VAR
+    //TC-06
     @And("Admin Room Type secenegini dogrular ve tiklar")
     public void adminRoomTypeSeceneginiDogrularVeTiklar() {
         Assert.assertTrue(done.roomTypeBox.isDisplayed());
         done.roomTypeBox.click();
-        //Room type a tıklıyor ama sırayla her birinin tıklanabilecegini göstermiyor
+
     }
-
-    @And("Admin TWIN, DELUXE, PREMIUM_DELUXE, SUIT, DAYCARE seceneklerini gorur")//Hata var
+    @And("Admin TWIN, DELUXE, PREMIUM_DELUXE, SUIT, DAYCARE seceneklerini gorur")
     public void adminTWINDELUXEPREMIUM_DELUXESUITDAYCARESecenekleriniGorur() {
-
         Select select = new Select(done.roomTypeBox);
-        List<WebElement> roomTypeBoxlist = Driver.getDriver().findElements(By.xpath("//select[@id='room-roomType']//option"));
-
-
-
-        }
+        select.selectByVisibleText("TWIN");
+        ReusableMethods.waitFor(1);
+        select.selectByVisibleText("DELUXE");
+        ReusableMethods.waitFor(1);
+        select.selectByVisibleText("PREMIUM_DELUXE");
+        ReusableMethods.waitFor(1);
+        select.selectByVisibleText("SUITE");
+        ReusableMethods.waitFor(1);
+        select.selectByVisibleText("DAYCARE");
+    }
 
         //TC 08-09-10
         @And("Admin Price secenegini bos birakir  ve hata mesajini alir")
@@ -95,37 +101,38 @@ public class US_016_StepDefinitions {
         @And("Admin  Price secenegine Negative deger girilir ve hata mesajini alir")
         public void adminPriceSecenegineNegativeDegerGirilirVeHataMesajiniAlir () {
             done.roomPriceBox.sendKeys("-500" + Keys.ENTER);
-            Assert.assertTrue(done.roomPriceSozelOzelNegatifDegerHataMesaji.isDisplayed());
+            Assert.assertTrue(done.roomPriceSozelOzelNegatifDegerHataMesaji.size() != 0);
 
         }
 
         @And("Admin  Price secenegine Pozitif deger girer ve hata mesajini almaz")
         public void adminPriceSeceneginePozitifDegerGirerVeHataMesajiniAlmaz () {
-            done.roomNumberBox.sendKeys("-15987" + Keys.ENTER);//hata var
+            done.roomNumberBox.sendKeys("-15987" + Keys.ENTER);
             done.roomPriceBox.sendKeys("500" + Keys.ENTER);
-            //Assert.assertFalse(done.roomPriceSozelOzelNegatifDegerHataMesaji.isDisplayed());
-            //hata mesajı almadıgını dogrulaması lazım
+            Assert.assertFalse(done.roomPriceSozelOzelNegatifDegerHataMesaji.size() != 0);
+
         }
 
         @And("Admin  Price secenegine sozel deger girilir ve hata mesajini alir")
         public void adminPriceSecenegineSozelDegerGirilirVeHataMesajiniAlir () {
             done.roomPriceBox.sendKeys("mnhgf" + Keys.ENTER);
-            Assert.assertTrue(done.roomPriceSozelOzelNegatifDegerHataMesaji.isDisplayed());
+            Assert.assertTrue(done.roomPriceSozelOzelNegatifDegerHataMesaji.size() != 0);
         }
 
         @And("Admin Room number-RoomType-Status-Price seceneklerini gecerli datalar ile doldurur")
         public void adminRoomNumberRoomTypeStatusPriceSecenekleriniGecerliDatalarIleDoldurur () {
-            done.roomNumberBox.sendKeys("21554173");
+        int rondomNumber=faker.number().numberBetween(-50000,1000000000);
+            done.roomNumberBox.sendKeys("rondomNumber" + Keys.ENTER);
             done.roomTypeBox.click();
             done.roomStatusSecme.isSelected();
             done.roomPriceBox.sendKeys("100");
-            actions.sendKeys(Keys.PAGE_DOWN).perform();
+
         }
 
         @And("Admin Description secenegini dogrular")
         public void adminDescriptionSeceneginiDogrular () {
             Assert.assertTrue(done.roomDesciriptionsBox.isDisplayed());
-            //hata var
+
         }
 
         @And("Admin Description secenegine Sozel-ozelkarakter-negatif farketmeyen bir deger girer")
@@ -194,6 +201,7 @@ public class US_016_StepDefinitions {
     @And("Admin Status seceneginin Chexbox ini secili degilse secer")
     public void adminStatusSecenegininChexboxIniSeciliDegilseSecer() {
         done.roomStatusSecme.isSelected();
-        ReusableMethods.waitFor(2000);
+        ReusableMethods.waitFor(2);
+        ReusableMethods.jsclick(done.roomStatusSecme);
     }
 }

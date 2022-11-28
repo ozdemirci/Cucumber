@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
+import java.util.List;
+
 public class DonePages {
     public DonePages() {
         PageFactory.initElements(Driver.getDriver(), this);
@@ -78,12 +80,12 @@ public class DonePages {
     @FindBy(xpath = "//input[@id='room-description']]") public WebElement roomDesciriptionsBox;
 
     @FindBy(xpath = "(//div[text()='This field is required.'])[2]") public WebElement roomPriceBosBirakilamazHataMesaji;
-    @FindBy(xpath = "//div[text()='This field should be at least 0.']") public WebElement roomPriceSozelOzelNegatifDegerHataMesaji;
+    @FindBy(xpath = "//div[text()='This field should be at least 0.']") public List<WebElement> roomPriceSozelOzelNegatifDegerHataMesaji;
 
     @FindBy(xpath = "//select[@id='room-roomType']") public WebElement roomTypeBox;
     @FindBy(xpath = "//select[@id='room-roomType']//option") public WebElement roomTypeDropDown;
     @FindBy(xpath = "//div[text()='This field is required.']") public WebElement roomNumberBosOlmazHataMesaji;
-    @FindBy(xpath = "//div[text()='This field should be a number.']") public WebElement roomNumberSozelOzelkarakterHataMesaji;
+    @FindBy(xpath = "//div[text()='This field should be a number.']") public List<WebElement> roomNumberSozelOzelkarakterHataMesaji;
     @FindBy(xpath = "//input[@type='checkbox']") public WebElement roomStatusSecme;
     @FindBy(xpath = "//button[@id='save-entity']") public WebElement roomSaveButton;
     @FindBy(xpath = "//*[@id=\"app-view-container\"]/div/div/div/div/div[1]/div/table/thead/tr/th[3]") public WebElement RoomsRoomTypeHead;

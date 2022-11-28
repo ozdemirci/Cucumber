@@ -19,7 +19,7 @@ public class US_015_StepDefinitions {
 
     @Given("Admin medunnaUrl ine gider")
     public void adminMedunnaUrlIneGider() {
-        Driver.getDriver().get(ConfigReader.getProperty("url"));
+        Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
     }
 
     @When("Admin sag ust kosedeki insan emojisine tiklar")
@@ -29,14 +29,14 @@ public class US_015_StepDefinitions {
 
     @When("Admin Sing in secenegine tiklar")
     public void adminSingInSecenegineTiklar() {
-        done.firstSingIn.click();
+        ReusableMethods.jsclick(done.firstSingIn);
     }
 
     @Then("Admin gelen pop-up a gecerli bir username ve password girer ve Sign in butonuna tiklar")
     public void adminGelenPopUpAGecerliBirUsernameVePasswordGirerVeSignInButonunaTiklar() {
         done.usernameTextBox.sendKeys("team08" + Keys.TAB);
         done.passwordTextBox.sendKeys("12345");
-        done.singInButton.click();
+       ReusableMethods.jsclick(done.singInButton);
     }
 
     @And("Admin giris yaptigini dogrular")
@@ -59,6 +59,7 @@ public class US_015_StepDefinitions {
     @And("Admin Patiens sayfasinda oldugunu dogrular")
     public void adminPatiensSayfasindaOldugunuDogrular() {
         Assert.assertEquals("Patients", done.AdminPatientS.getText());
+
     }
 
     @And("Admin Patiens sayfasinda Create a new Patient secenegine tiklar")
@@ -74,7 +75,7 @@ public class US_015_StepDefinitions {
     //TC02
     @Given("Personel Medunna url ine gider")
     public void personelMedunnaUrlIneGider() {
-        Driver.getDriver().get(ConfigReader.getProperty("url"));
+        Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
     }
 
     @When("Personel sag ust kosedeki insan emojisine tiklar")
@@ -140,7 +141,7 @@ public class US_015_StepDefinitions {
     //TC03
     @Given("Hasta Medunna url ine gider")
     public void hastaMedunnaUrlIneGider() {
-        Driver.getDriver().get(ConfigReader.getProperty("url"));
+        Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
     }
 
     @When("Hasta sag ust kosedeki insan emojisine tiklar")
@@ -173,7 +174,7 @@ public class US_015_StepDefinitions {
     //TC04
     @Given("Doktor Medunna url ine gider")
     public void doktorMedunnaUrlIneGider() {
-        Driver.getDriver().get(ConfigReader.getProperty("url"));
+        Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
     }
 
     @When("Doktor sag ust kosedeki insan emojisine tiklar")
@@ -206,7 +207,7 @@ public class US_015_StepDefinitions {
     //TC05
     @Given("User Medunna url ine gider")
     public void userMedunnaUrlIneGider() {
-        Driver.getDriver().get(ConfigReader.getProperty("url"));
+        Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
     }
 
     @When("User sag ust kosedeki insan emojisine tiklar")
@@ -252,17 +253,8 @@ public class US_015_StepDefinitions {
 
     @And("Admin Patients sayfasinda bir hasta belirler")
     public void adminPatientsSayfasindaBirHastaBelirler() {
-        try {
-            done.PatientsDexter336İcerenSayfa.click();
-        } catch (Exception e) {
-            done.PatientsOncekiSayfaİcon.click();
-            throw new RuntimeException(e);
-        }
-        done.AdminPatientSTestHastasi.click();
 
-
-
-
+        Driver.getDriver().get(ConfigReader.getProperty("hasta336Sayfa"));
 
     }
 
