@@ -245,7 +245,21 @@ public class ReusableMethods {
 
     }
 
-    public static void jsScroll(WebElement sendAnAppointmentRequestButton) {
-    }
+
+   
+
+
+//Tulay
+    public static void jsclickTulay(WebElement webElement){
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("arguments[0].click();", webElement);
+        try {
+            webElement.click();
+        } catch (Exception e) {
+            JavascriptExecutor executor = (JavascriptExecutor) Driver.getDriver();
+            executor.executeScript("arguments[0].click();", webElement);
+        }
+
+    
 }
 

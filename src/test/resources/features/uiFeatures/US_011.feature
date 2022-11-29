@@ -1,4 +1,4 @@
-@US11
+@US11 @smoke
 Feature: US_011 "My Appointments" Doktor  tarafından düzenlenebilmeli
 
   Background: Ortak islemler
@@ -35,6 +35,7 @@ Feature: US_011 "My Appointments" Doktor  tarafından düzenlenebilmeli
   Scenario: TC03  Doktor  "Anamnesis, Treatment ve Diagnosis" alanlarını doldurmak zorunda olmali
 
     And doktor anemnesis, treatment, diagnosis bolumlerini bos birakir
+    And doktor Save butonuna tiklar
     Then Doktor "This field is required." mesajinin gorunur oldugunu dogrular
     And doktor sayfayi kapatir
 
@@ -49,7 +50,7 @@ Feature: US_011 "My Appointments" Doktor  tarafından düzenlenebilmeli
   @US11_TC05
   Scenario: TC05  Doktor "Status" bolumunu "PENDING, COMPLETED veya CANCELLED" olarak secebilmeli
 
-    And doktor status bolumunu "COMPLETED" olarak secer
+    And doktor status bolumunu "PENDING" olarak secer
     And doktor anemnesis, treatment, diagnosis bolumlerini doldurur
     And doktor Save butonuna tiklar
     Then Doktor "The Appointment is updated" mesajini gorunur oldugunu dogrular
