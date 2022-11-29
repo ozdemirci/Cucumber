@@ -244,5 +244,8 @@ public class ReusableMethods {
         return value;
 
     }
+
+    public static void jsScroll(WebElement sendAnAppointmentRequestButton) {
+    }
 }
 
