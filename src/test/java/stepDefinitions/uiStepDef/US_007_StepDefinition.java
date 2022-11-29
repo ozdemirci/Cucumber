@@ -118,12 +118,12 @@ public class US_007_StepDefinition {
 
     }
 
-
+/*
     @And("Sayfa kapatilir")
    public void sayfaKapatilir() {
         Driver.closeDriver();
     }
-/*
+
     @And("Sayfa sign out yapilir")
     public void sayfaSignOutYapilir() {
         js.executeScript("argumants[0].click()",page.accountMenu);
