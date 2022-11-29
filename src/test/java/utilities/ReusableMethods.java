@@ -246,6 +246,9 @@ public class ReusableMethods {
     }
 
 
+   
+
+
 //Tulay
     public static void jsclickTulay(WebElement webElement){
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
@@ -256,6 +259,7 @@ public class ReusableMethods {
             JavascriptExecutor executor = (JavascriptExecutor) Driver.getDriver();
             executor.executeScript("arguments[0].click();", webElement);
         }
-    }
+
+    
 }
 
