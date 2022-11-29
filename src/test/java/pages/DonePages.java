@@ -51,15 +51,18 @@ public class DonePages {
     @FindBy(xpath = "//span[text()='Create or edit a Patient']") public WebElement AdminCreateOrCreaditPatientText;
     @FindBy(xpath = "//table/thead/tr") public WebElement AdminPatientSWebTable;
     @FindBy(xpath = "//div/table/tbody/tr[8]") public WebElement AdminPatientSTestHastasi;
-    @FindBy(xpath = "//a[text()='341211']") public WebElement AdminPatientDexterİd;
+    @FindBy(xpath = "(//a[@class='btn btn-link btn-sm'])[10]") public WebElement AdminPatientDexterİd;
+
+    @FindBy(xpath= "//div[@class='Toastify__toast-body']") public List<WebElement> toastifyList;
 
    //silme bölümü
     @FindBy (xpath = "(//div[@class='btn-group flex-btn-group-container'])[1]") public WebElement PatientsWievEditDeleteButton;
-    @FindBy(xpath = "(//span[text()='Delete'])[1]") public WebElement AdminPatientSDeleteButton;
-    @FindBy(xpath = "(//span[text()='Edit'])[1]") public WebElement AdminPatientSEditButton;
+    @FindBy(xpath = "/html/body/div/div/div/div[4]/div/div/div/div/div[1]/div/table/tbody/tr[10]/td[16]/div/a[3]") public WebElement AdminPatientSDeleteButton;
+    @FindBy(xpath = "(//a[@class='page-link'])[6]") public WebElement AdminPatientS337;
+    @FindBy(xpath = "(//span[@class='sr-only'])[1]") public WebElement AdminPatientPeriviusButton;
     @FindBy(xpath = "(//span[text()='View'])[1]") public WebElement AdminPatientSWiewButton;
 
-    @FindBy(xpath = "//h5[@class='modal-title']") public WebElement AdminConfirmDeleteOperationsAlert;//class olarak al.valusunu göster.
+    @FindBy(xpath = "//h5[@class='modal-title']") public WebElement AdminConfirmDeleteOperationsAlert;
     @FindBy(xpath = "//button[@id='jhi-confirm-delete-patient']") public WebElement AdminConfirmDeleteButton;
 
     @FindBy(xpath = "//div[@class='Toastify__toast-body']") public WebElement AdminDeleteOnayMesaji;

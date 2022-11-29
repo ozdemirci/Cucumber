@@ -91,6 +91,14 @@ public class US_016_StepDefinitions {
         select.selectByVisibleText("DAYCARE");
     }
 
+    //TC07
+    @And("Admin Status seceneginin Chexbox ini secili degilse secer")
+    public void adminStatusSecenegininChexboxIniSeciliDegilseSecer() {
+        done.roomStatusSecme.isSelected();
+        ReusableMethods.waitFor(2);
+        ReusableMethods.jsclick(done.roomStatusSecme);
+    }
+
         //TC 08-09-10
         @And("Admin Price secenegini bos birakir  ve hata mesajini alir")
         public void adminPriceSeceneginiBosBirakirVeHataMesajiniAlir () {
@@ -122,15 +130,16 @@ public class US_016_StepDefinitions {
         @And("Admin Room number-RoomType-Status-Price seceneklerini gecerli datalar ile doldurur")
         public void adminRoomNumberRoomTypeStatusPriceSecenekleriniGecerliDatalarIleDoldurur () {
         int rondomNumber=faker.number().numberBetween(-50000,1000000000);
-            done.roomNumberBox.sendKeys("rondomNumber" + Keys.ENTER);
+            done.roomNumberBox.sendKeys("rondomNumber");
             done.roomTypeBox.click();
-            done.roomStatusSecme.isSelected();
+            done.roomStatusSecme.click();
             done.roomPriceBox.sendKeys("100");
 
         }
 
         @And("Admin Description secenegini dogrular")
         public void adminDescriptionSeceneginiDogrular () {
+            System.out.println(done.toastifyList.toString());
             Assert.assertTrue(done.roomDesciriptionsBox.isDisplayed());
 
         }
@@ -148,15 +157,14 @@ public class US_016_StepDefinitions {
 
         @And("Admin oda olusturuldu onay mesajini goruntuler")
         public void adminOnayMesajiniGoruntuler () {
-///mesajı suan alamıyorum locate alamadım
         }
-
+//tc13
         @And("Admin Room Type secenegine tiklayarak istedigi turdeki odalari goruntuler")
         public void adminRoomTypeSecenegineTiklayarakIstedigiTurdekiOdalariGoruntuler () {
-            ReusableMethods.jsclick(done.RoomsRoomTypeHead);//tıklama yapmıyor
-            Assert.assertTrue(done.RoomsRoomTypeHead.isDisplayed());
-        }
+            ReusableMethods.jsclick(done.RoomsRoomTypeHead);
 
+        }
+//tc14
         @And("Admin Rooms sayfasinda en sagdaki sutunda View-Edit-Delete seceneklerini dogrular")
         public void adminRoomsSayfasindaEnSagdakiSutundaViewEditDeleteSecenekleriniDogrular () {
             Assert.assertTrue(done.RoomsWiewEditDeleteButtonlari.isDisplayed());
@@ -178,12 +186,12 @@ public class US_016_StepDefinitions {
 
         @And("Admin Save butonuna tiklar")
         public void adminSaveButonunaTiklar () {
-            done.roomSaveButton.click();
+            ReusableMethods.jsclick(done.roomSaveButton);
         }
 
         @And("Admin guncelleme yapildi onay mesajini goruntuler")
         public void adminGuncellemeYapildiOnayMesajiniGoruntuler () {
-            //mesajı lovate edemiyorum
+
         }
 
         @And("Admin mevcut bir oda secer ve onun Delete secenegine tiklar")
@@ -197,11 +205,5 @@ public class US_016_StepDefinitions {
             //hata var
         }
 
-//TC07
-    @And("Admin Status seceneginin Chexbox ini secili degilse secer")
-    public void adminStatusSecenegininChexboxIniSeciliDegilseSecer() {
-        done.roomStatusSecme.isSelected();
-        ReusableMethods.waitFor(2);
-        ReusableMethods.jsclick(done.roomStatusSecme);
-    }
+
 }

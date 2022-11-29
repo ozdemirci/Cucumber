@@ -6,11 +6,16 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 import pages.DonePages;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+
+import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class US_015_StepDefinitions {
     DonePages done = new DonePages();
@@ -246,44 +251,69 @@ public class US_015_StepDefinitions {
 
   //TC11
     @And("Admin Patiens sayfasinda en sagdaki sutunlarda View-Edit-Delete seceneklerini dogrular")
-    public void adminPatiensSayfasindaEnSagdakiSutunlardaViewEditDeleteSecenekleriniDogrular() {
-        Assert.assertTrue(done.PatientsWievEditDeleteButton.isDisplayed());
+    public void adminPatiensSayfasindaEnSagdakiSutunlardaViewEditDeleteSecenekleriniDogrular() throws AWTException {
 
+        Robot robot = new Robot();
+        for (int i = 0; i < 4; i++) {
+            robot.keyPress(KeyEvent.VK_CONTROL); //CTRL ye tiklandi
+            robot.keyPress(KeyEvent.VK_SUBTRACT); // - ye tiklandi
+            robot.keyRelease(KeyEvent.VK_SUBTRACT); // CTRL yi birakti
+            robot.keyRelease(KeyEvent.VK_CONTROL); //- yi birakti
+            // CTRL (-) ye basılarak ekran belirlenen miktarda küçültülmüş oldu.
+          Assert.assertTrue(done.PatientsWievEditDeleteButton.isDisplayed());
+
+
+        }
     }
 
-    @And("Admin Patients sayfasinda bir hasta belirler")
-    public void adminPatientsSayfasindaBirHastaBelirler() {
+        @Then("Admin Patients sayfasinda bir hasta belirler")
+        public void admin_patients_sayfasinda_bir_hasta_belirler() throws AWTException {
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
 
-        Driver.getDriver().get(ConfigReader.getProperty("hasta336Sayfa"));
+            try {
+               ReusableMethods.waitForClickablility(done.AdminPatientS337,5);
+            } catch (Exception e) {
+                done.AdminPatientPeriviusButton.click();
+                throw new RuntimeException(e);
+            }
+            System.out.println("sayfaya gitme denem");
 
-    }
-
-    @And("Admin belirledigi hastanin Delete secenegine tiklar")
-    public void adminBelirledigiHastaninDeleteSecenegineTiklar() {
+        }
+        @Then("Admin belirledigi hastanin Delete secenegine tiklar")
+        public void admin_belirledigi_hastanin_delete_secenegine_tiklar() {
         done.AdminPatientSDeleteButton.click();
+
+
+        }
+        @Then("Admin Confirm delete operation ekraninin acildigini dogrular")
+        public void admin_confirm_delete_operation_ekraninin_acildigini_dogrular() {
+
+        String alerMessaj=Driver.getDriver().switchTo().alert().getText();
+        Assert.assertTrue(alerMessaj.contains("Confirm delete operation"));
+
+
+        }
+        @Then("Admin Confirm delete operation ekraninda Delete butonuna tiklar")
+        public void admin_confirm_delete_operation_ekraninda_delete_butonuna_tiklar() {
+       ReusableMethods.jsclick(done.AdminConfirmDeleteButton);
+            Driver.getDriver().switchTo().alert().accept();
+
+        }
+        @Then("Admin hasta silme onay mesajini dogrular")
+        public void admin_hasta_silme_onay_mesajini_dogrular() {
+
+        }
+
     }
 
-    @And("Admin Confirm delete operation ekraninin acildigini dogrular")
-    public void adminConfirmDeleteOperationEkranininAcildiginiDogrular() {
-       // assertEquals("Toastify__toast-body",obje.successMessage.getAttribute("class"));
-      Assert.assertEquals("modal-title",done.AdminConfirmDeleteOperationsAlert.getAttribute("class"));
-    }
-
-    @And("Admin Confirm delete operation ekraninda Delete butonuna tiklar")
-    public void adminConfirmDeleteOperationEkranindaDeleteButonunaTiklar() {
-      //  Driver.getDriver().switchTo().alert().accept();
-        ReusableMethods.jsclick(done.AdminPatientSDeleteButton);
-    }
-
-    @And("Admin hasta silme onay mesajini dogrular")
-    public void adminOnayMesajiniDogrular()
-    {
-        Assert.assertTrue(done.AdminDeleteOnayMesaji.isDisplayed());
-    }
 
 
 
-}
+
+
+
+
+
 
 
 
