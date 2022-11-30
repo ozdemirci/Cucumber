@@ -9,10 +9,13 @@ import utilities.Driver;
 import java.util.List;
 
 public class DonePages {
+
+
     public DonePages() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
-
+    @FindBy (xpath = "//span[text()='Patient']")
+    public WebElement itemAndTitlesPatient;
     //AnaSayfa Sing in olma kısmı
     @FindBy(xpath = "//li[@id='account-menu']") public WebElement insanIcon;
     @FindBy(xpath = "//a[@class='dropdown-item']") public WebElement firstSingIn;
@@ -42,28 +45,34 @@ public class DonePages {
     @FindBy(xpath = "//span[text()='Items&Titles']") public WebElement itemAndTitles;
 
     //Hasta ile ilgili kısımlar
-    @FindBy(xpath = "//span[text()='Patient']") public WebElement itemAndTitlesPatient;
+    @FindBy(xpath = "//input[@name='firstName']") public WebElement patiensFirstNameBox;
+    @FindBy(xpath = "//input[@name='lastName']") public WebElement patiensLastNameBox;
+    @FindBy(xpath = "//input[@name='birthDate']") public WebElement patiensBirthDayBox;
+    @FindBy(xpath = "//input[@name='email']") public WebElement patiensEmailBox;
+    @FindBy(xpath = "//input[@name='phone']") public WebElement patiensPhoneBox;
+    @FindBy(xpath = "//select[@name='gender']") public WebElement patiensGenderDDBox;
+    @FindBy(xpath = "//select[@name='bloodGroup']") public WebElement patiensBloodGroupDDBox;
+    @FindBy(xpath = "//input[@name='adress']") public WebElement patiensAdressBox;
+    @FindBy(xpath = "//textarea[@name='description']") public WebElement patiensDesciripBox;
+    @FindBy(xpath = "//select[@name='user.id']") public WebElement patiensUserBox;
+    @FindBy(xpath = "//select[@name='country.id']") public WebElement patiensCountryDDBox;
 
-    @FindBy(xpath = "//span[text()='Patients']") public WebElement AdminPatientS;
+    @FindBy(xpath = "//span[text()='Patients']") public WebElement AdminPatientSayfasi;
 
     @FindBy(xpath = "//a[@id='jh-create-entity']") public WebElement AdminCreateANewPatientButton;
 
     @FindBy(xpath = "//span[text()='Create or edit a Patient']") public WebElement AdminCreateOrCreaditPatientText;
     @FindBy(xpath = "//table/thead/tr") public WebElement AdminPatientSWebTable;
-    @FindBy(xpath = "//div/table/tbody/tr[8]") public WebElement AdminPatientSTestHastasi;
-    @FindBy(xpath = "(//a[@class='btn btn-link btn-sm'])[10]") public WebElement AdminPatientDexterİd;
 
-    @FindBy(xpath= "//div[@class='Toastify__toast-body']") public List<WebElement> toastifyList;
 
-   //silme bölümü
+    //silme bölümü
     @FindBy (xpath = "(//div[@class='btn-group flex-btn-group-container'])[1]") public WebElement PatientsWievEditDeleteButton;
-    @FindBy(xpath = "/html/body/div/div/div/div[4]/div/div/div/div/div[1]/div/table/tbody/tr[10]/td[16]/div/a[3]") public WebElement AdminPatientSDeleteButton;
-    @FindBy(xpath = "(//a[@class='page-link'])[6]") public WebElement AdminPatientS337;
-    @FindBy(xpath = "(//span[@class='sr-only'])[1]") public WebElement AdminPatientPeriviusButton;
-    @FindBy(xpath = "(//span[text()='View'])[1]") public WebElement AdminPatientSWiewButton;
+    @FindBy(xpath = "(//span[text()='Delete'])[1]") public WebElement AdminPatientSDeleteButton;
+    @FindBy(xpath = "(//tr/th[@class='hand'])[1]") public WebElement PatiensIdSiralama;
 
-    @FindBy(xpath = "//h5[@class='modal-title']") public WebElement AdminConfirmDeleteOperationsAlert;
-    @FindBy(xpath = "//button[@id='jhi-confirm-delete-patient']") public WebElement AdminConfirmDeleteButton;
+    @FindBy(xpath = "//div[@class='modal-content']") public WebElement AdminConfirmDeleteOperationsAlert;
+    @FindBy(xpath = "//button[@id='jhi-confirm-delete-patient']") public WebElement AdminPatienstConfirmDeleteButton;
+    @FindBy(xpath = "//button[@id='jhi-confirm-delete-room']") public WebElement AdminRoomConfirmDeleteButton;
 
     @FindBy(xpath = "//div[@class='Toastify__toast-body']") public WebElement AdminDeleteOnayMesaji;
 
@@ -80,7 +89,21 @@ public class DonePages {
     @FindBy(xpath = "//h2[@id='hospitalmsappfrontendApp.room.home.createOrEditLabel']") public WebElement adminCreateorEditRoomPage;
     @FindBy(xpath = "//input[@id='room-roomNumber']") public WebElement roomNumberBox;
     @FindBy(xpath = "//input[@name='price']") public WebElement roomPriceBox;
-    @FindBy(xpath = "//input[@id='room-description']]") public WebElement roomDesciriptionsBox;
+    @FindBy(xpath = "//input[@name='description']") public WebElement roomDesciriptionsBox;
+
+    @FindBy(xpath = "//div[contains(text(),'A new Patient is created with identifier')]")
+    public WebElement CreatePatiensOnayMessage;
+
+    @FindBy(xpath = "//div[contains(text(),'A Patient is deleted')]")
+    public WebElement PatiensSilmeOnayMessage;
+
+    @FindBy(xpath = "//div[contains(text(),'A Room is deleted')]")
+    public WebElement OdaSilmeOnayMessage;
+
+    @FindBy(xpath = "//div[contains(text(),'A new Room is created')]")
+    public WebElement CreateRoomOnayMessage;
+    @FindBy(xpath = "//div[contains(text(),'A Room is updated')]")
+    public WebElement updatedRoomOnayMessage;
 
     @FindBy(xpath = "(//div[text()='This field is required.'])[2]") public WebElement roomPriceBosBirakilamazHataMesaji;
     @FindBy(xpath = "//div[text()='This field should be at least 0.']") public List<WebElement> roomPriceSozelOzelNegatifDegerHataMesaji;
@@ -94,14 +117,14 @@ public class DonePages {
     @FindBy(xpath = "//*[@id=\"app-view-container\"]/div/div/div/div/div[1]/div/table/thead/tr/th[3]") public WebElement RoomsRoomTypeHead;
     @FindBy(xpath = "(//div[@class='btn-group flex-btn-group-container'])[1]") public WebElement RoomsWiewEditDeleteButtonlari;
     @FindBy(xpath = "(//span[text()='Delete'])[1]") public WebElement RoomsDeleteButton;
-    @FindBy(xpath = "(//span[text()='Edit'])[1]") public WebElement RoomsEditButton;
+    @FindBy(xpath = "(//a[@class='btn btn-primary btn-sm'])[1]") public WebElement RoomsEditButton;
     @FindBy(xpath = "(//span[text()='View'])[1]") public WebElement RoomsViewButton;
     @FindBy(xpath = "//span[text()='Confirm delete operation']") public WebElement RoomsConfirmDeleteAlert;
     @FindBy(xpath = "(//span[text()='Delete'])[21]") public WebElement RoomsConfirmDeleteButton;
-    @FindBy(xpath = "//div/table/tbody/tr[1]") public WebElement RoomsTestHastasi;
+    @FindBy(xpath = "//div/table/tbody/tr[1]") public WebElement RoomsTestOdasi;
+    @FindBy(xpath = "(//tr/th[@class='hand'])[1]") public WebElement RoomsIDBelirleme;
     @FindBy(xpath = "//div[@class='justify-content-center row']") public WebElement RoomsCreateEditSayfasi;
-    @FindBy(xpath = "//a[text()='336']") public WebElement PatientsDexter336İcerenSayfa;
-    @FindBy(xpath = "//span[text()='Previous']") public WebElement PatientsOncekiSayfaİcon;
+
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
