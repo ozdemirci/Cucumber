@@ -13,6 +13,9 @@ Feature: US_15 Yeni hastalar yalnizca yonetici tarafindan olusturulabilir
     And Admin Patiens sayfasinda oldugunu dogrular
     And Admin Patiens sayfasinda Create a new Patient secenegine tiklar
     And Admin Create or edit a Patient sayfasinda oldugunu dogrular
+    And Admin hasta bilgilerini girer
+    And Admin Save butonuna tiklar
+    And Admin hasta olusturuldu onay mesajini dogrular
     And Admin sing out yapar
 
   @US_15_02
@@ -78,6 +81,10 @@ Feature: US_15 Yeni hastalar yalnizca yonetici tarafindan olusturulabilir
     And Admin giris yaptigini dogrular
     And Admin items&Titles secenegini dogrular ve tiklar
     And Admin items&Titles seceneginden Patient secenegini secer
+    And Admin Patiens sayfasinda Create a new Patient secenegine tiklar
+    And Admin Create or edit a Patient sayfasinda oldugunu dogrular
+    And Admin hasta bilgilerini girer
+    And Admin Save butonuna tiklar
     And Admin Patiens sayfasinda oldugunu dogrular
     And Admin Patiens sayfasinda en sagdaki sutunlarda View-Edit-Delete seceneklerini dogrular
     And Admin Patients sayfasinda bir hasta belirler

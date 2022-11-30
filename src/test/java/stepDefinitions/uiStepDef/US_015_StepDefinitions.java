@@ -1,14 +1,17 @@
 package stepDefinitions.uiStepDef;
 
+import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 import pages.DonePages;
 import utilities.ConfigReader;
 import utilities.Driver;
@@ -20,6 +23,8 @@ import java.awt.event.KeyEvent;
 public class US_015_StepDefinitions {
     DonePages done = new DonePages();
     Actions actions = new Actions(Driver.getDriver());
+    Faker faker = new Faker();
+    Select select;
 
 
     @Given("Admin medunnaUrl ine gider")
@@ -63,7 +68,7 @@ public class US_015_StepDefinitions {
 
     @And("Admin Patiens sayfasinda oldugunu dogrular")
     public void adminPatiensSayfasindaOldugunuDogrular() {
-        Assert.assertEquals("Patients", done.AdminPatientS.getText());
+        Assert.assertEquals("Patients", done.AdminPatientSayfasi.getText());
 
     }
 
@@ -245,7 +250,7 @@ public class US_015_StepDefinitions {
     //TC06
     @And("Admin Patiens sayfasinda oldugunu dogrular ve SSN,First Name,Last Name,Birth Date,Phone,Gender,Blood Group,Address,Description,Created Date,User,Country and state-City gibi secenekleri dogrular\"")
     public void adminPatiensSayfasindaOldugunuDogrularVeSSNFirstNameLastNameBirthDatePhoneGenderBloodGroupAddressDescriptionCreatedDateUserCountryAndStateCityGibiSecenekleriDogrular() {
-        Assert.assertTrue(done.AdminPatientS.isDisplayed());
+        Assert.assertTrue(done.AdminPatientSayfasi.isDisplayed());
         Assert.assertTrue(done.AdminPatientSWebTable.isDisplayed());
     }
 
@@ -256,9 +261,9 @@ public class US_015_StepDefinitions {
         Robot robot = new Robot();
         for (int i = 0; i < 4; i++) {
             robot.keyPress(KeyEvent.VK_CONTROL); //CTRL ye tiklandi
-            robot.keyPress(KeyEvent.VK_SUBTRACT); // - ye tiklandi
-            robot.keyRelease(KeyEvent.VK_SUBTRACT); // CTRL yi birakti
-            robot.keyRelease(KeyEvent.VK_CONTROL); //- yi birakti
+            robot.keyPress(KeyEvent.VK_SUBTRACT);
+            robot.keyPress(KeyEvent.VK_CONTROL); //CTRL ye tiklandi
+            robot.keyPress(KeyEvent.VK_SUBTRACT); // - ye tiklandi//- yi birakti
             // CTRL (-) ye basılarak ekran belirlenen miktarda küçültülmüş oldu.
           Assert.assertTrue(done.PatientsWievEditDeleteButton.isDisplayed());
 
@@ -268,15 +273,8 @@ public class US_015_StepDefinitions {
 
         @Then("Admin Patients sayfasinda bir hasta belirler")
         public void admin_patients_sayfasinda_bir_hasta_belirler() throws AWTException {
-        actions.sendKeys(Keys.PAGE_DOWN).perform();
+         done.PatiensIdSiralama.click();
 
-            try {
-               ReusableMethods.waitForClickablility(done.AdminPatientS337,5);
-            } catch (Exception e) {
-                done.AdminPatientPeriviusButton.click();
-                throw new RuntimeException(e);
-            }
-            System.out.println("sayfaya gitme denem");
 
         }
         @Then("Admin belirledigi hastanin Delete secenegine tiklar")
@@ -287,24 +285,64 @@ public class US_015_StepDefinitions {
         }
         @Then("Admin Confirm delete operation ekraninin acildigini dogrular")
         public void admin_confirm_delete_operation_ekraninin_acildigini_dogrular() {
-
-        String alerMessaj=Driver.getDriver().switchTo().alert().getText();
-        Assert.assertTrue(alerMessaj.contains("Confirm delete operation"));
-
-
-        }
-        @Then("Admin Confirm delete operation ekraninda Delete butonuna tiklar")
-        public void admin_confirm_delete_operation_ekraninda_delete_butonuna_tiklar() {
-       ReusableMethods.jsclick(done.AdminConfirmDeleteButton);
-            Driver.getDriver().switchTo().alert().accept();
-
-        }
-        @Then("Admin hasta silme onay mesajini dogrular")
-        public void admin_hasta_silme_onay_mesajini_dogrular() {
-
-        }
+        Assert.assertTrue(done.AdminConfirmDeleteOperationsAlert.isEnabled());
 
     }
+        @Then("Admin Confirm delete operation ekraninda Delete butonuna tiklar")
+        public void admin_confirm_delete_operation_ekraninda_delete_butonuna_tiklar() {
+       done.AdminPatienstConfirmDeleteButton.click();
+
+        }
+
+        @Then("Admin hasta silme onay mesajini dogrular")
+        public void admin_hasta_silme_onay_mesajini_dogrular() {
+       Assert.assertTrue(done.PatiensSilmeOnayMessage.isEnabled());
+        }
+
+        @Then("Admin hasta bilgilerini girer")
+        public void admin_hasta_bilgilerini_girer() {
+            done.patiensFirstNameBox.sendKeys(faker.name().firstName());
+            ReusableMethods.waitFor(1);
+            done.patiensLastNameBox.sendKeys(faker.name().lastName());
+            ReusableMethods.waitFor(1);
+            done.patiensBirthDayBox.sendKeys("12.12.1995 00.00");
+            ReusableMethods.waitFor(1);
+            done.patiensEmailBox.sendKeys(faker.internet().emailAddress());
+            ReusableMethods.waitFor(1);
+            done.patiensPhoneBox.sendKeys(faker.number().digits(10));
+            ReusableMethods.waitFor(1);
+            Select select = new Select(done.patiensGenderDDBox);
+            select.selectByVisibleText("FEMALE");
+            ReusableMethods.waitFor(1);
+            Select select2 = new Select(done.patiensBloodGroupDDBox);
+            select2.selectByVisibleText("A-");
+            ReusableMethods.waitFor(1);
+            done.patiensAdressBox.sendKeys("1234.cd Ankara ");
+            ReusableMethods.waitFor(1);
+            done.patiensDesciripBox.sendKeys("team08");
+            ReusableMethods.waitFor(1);
+            Select select3 = new Select(done.patiensUserBox);
+            select3.selectByVisibleText("jonathan");
+            ReusableMethods.waitFor(1);
+            Select select4 = new Select(done.patiensCountryDDBox);
+            select4.selectByVisibleText("USA");
+            ReusableMethods.waitFor(1);
+
+        }
+        @Then("Admin hasta olusturuldu onay mesajini dogrular")
+        public void admin_hasta_olusturuldu_onay_mesajini_dogrular() {
+            Assert.assertTrue(done.CreatePatiensOnayMessage.isEnabled());
+
+
+        }
+
+
+
+
+
+
+    }
+
 
 
 

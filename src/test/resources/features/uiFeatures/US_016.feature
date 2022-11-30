@@ -13,6 +13,9 @@ Feature: Oda Olusturma / Goruntuleme / Guncelleme /Silme (Admin)
     And Admin Rooms sayfasinda oldugunu dogrular
     And Admin Rooms sayfasinda Create a new Room secenegine tiklar
     And Admin Create or edit a Room sayfasinda oldugunu dogrular
+    And Admin oda bilgilerini girer
+    And Admin Save butonunu dogrular ve tiklar
+    And Admin oda olusturuldu onay mesajini goruntuler
     And Admin sing out yapar
 
   @US_16_02
@@ -223,12 +226,14 @@ Feature: Oda Olusturma / Goruntuleme / Guncelleme /Silme (Admin)
       And Admin giris yaptigini dogrular
       And Admin items&Titles secenegini dogrular ve tiklar
       And Admin items&Titles seceneginden Room secenegini secer
-      And Admin Rooms sayfasinda oldugunu dogrular
-      And Admin Rooms sayfasinda en sagdaki sutunda View-Edit-Delete seceneklerini dogrular
+      And Admin Rooms sayfasinda Create a new Room secenegine tiklar
+      And Admin Create or edit a Room sayfasinda oldugunu dogrular
+      And Admin oda bilgilerini girer
+      And Admin Save butonunu dogrular ve tiklar
       And Admin mevcut bir oda secer ve onun Delete secenegine tiklar
       And Admin Confirm delete operation ekraninin acildigini dogrular
-      And Admin Confirm delete operation ekraninda Delete butonuna tiklar
-      And Admin silme onay mesajini dogrular
+      And Admin Confirm Delete operation ekraninda Delete butonuna tiklar
+      And Admin oda silme onay mesajini dogrular
 
 
 
