@@ -46,7 +46,7 @@ public class US10_Page {
     public WebElement docTreatment ;
     @FindBy(xpath = "//tbody/tr/td[7]")
     public WebElement docDiagnosis  ;
-    @FindBy(xpath = "//*[@class='d-none d-md-inline']")
+    @FindBy(xpath = "(//*[@class='d-none d-md-inline'])[2]")
     public WebElement docAppointmentEdit;
     @FindBy(xpath = "//textarea[@id='appointment-anamnesis']")
     public WebElement docAnamnesis;
