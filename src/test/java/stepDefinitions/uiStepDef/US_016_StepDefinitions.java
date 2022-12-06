@@ -15,12 +15,14 @@ import utilities.ReusableMethods;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class US_016_StepDefinitions {
     DonePages done = new DonePages();
     Actions actions = new Actions(Driver.getDriver());
     Select select;
     Faker faker = new Faker();
+    Random random = new Random();
 
     @And("Admin items&Titles seceneginden Room secenegini secer")
     public void adminItemsTitlesSecenegindenRoomSeceneginiSecer() {
@@ -91,6 +93,14 @@ public class US_016_StepDefinitions {
         select.selectByVisibleText("DAYCARE");
     }
 
+    //TC07
+    @And("Admin Status seceneginin Chexbox ini secili degilse secer")
+    public void adminStatusSecenegininChexboxIniSeciliDegilseSecer() {
+        done.roomStatusSecme.isSelected();
+        ReusableMethods.waitFor(2);
+        ReusableMethods.jsclick(done.roomStatusSecme);
+    }
+
         //TC 08-09-10
         @And("Admin Price secenegini bos birakir  ve hata mesajini alir")
         public void adminPriceSeceneginiBosBirakirVeHataMesajiniAlir () {
@@ -119,89 +129,114 @@ public class US_016_StepDefinitions {
             Assert.assertTrue(done.roomPriceSozelOzelNegatifDegerHataMesaji.size() != 0);
         }
 
-        @And("Admin Room number-RoomType-Status-Price seceneklerini gecerli datalar ile doldurur")
-        public void adminRoomNumberRoomTypeStatusPriceSecenekleriniGecerliDatalarIleDoldurur () {
-        int rondomNumber=faker.number().numberBetween(-50000,1000000000);
-            done.roomNumberBox.sendKeys("rondomNumber" + Keys.ENTER);
-            done.roomTypeBox.click();
-            done.roomStatusSecme.isSelected();
-            done.roomPriceBox.sendKeys("100");
 
-        }
 
         @And("Admin Description secenegini dogrular")
         public void adminDescriptionSeceneginiDogrular () {
-            Assert.assertTrue(done.roomDesciriptionsBox.isDisplayed());
+            Assert.assertTrue(done.roomDesciriptionsBox.isEnabled());
 
         }
 
         @And("Admin Description secenegine Sozel-ozelkarakter-negatif farketmeyen bir deger girer")
         public void adminDescriptionSecenegineSozelOzelkarakterNegatifFarketmeyenBirDegerGirer () {
-            done.roomDesciriptionsBox.sendKeys("/*1788abcd" + Keys.ENTER);
+            done.roomDesciriptionsBox.sendKeys("team08");
         }
 
         @And("Admin Save butonunu dogrular ve tiklar")
         public void adminSaveButonunuDogrularVeTiklar () {
-            Assert.assertTrue(done.roomSaveButton.isDisplayed());
-            done.roomSaveButton.click();
+            Assert.assertTrue(done.roomSaveButton.isEnabled());
+            ReusableMethods.jsclick(done.roomSaveButton);
         }
 
         @And("Admin oda olusturuldu onay mesajini goruntuler")
         public void adminOnayMesajiniGoruntuler () {
-///mesajı suan alamıyorum locate alamadım
+        Assert.assertTrue(done.CreateRoomOnayMessage.isEnabled());
         }
-
+//tc13
         @And("Admin Room Type secenegine tiklayarak istedigi turdeki odalari goruntuler")
         public void adminRoomTypeSecenegineTiklayarakIstedigiTurdekiOdalariGoruntuler () {
-            ReusableMethods.jsclick(done.RoomsRoomTypeHead);//tıklama yapmıyor
-            Assert.assertTrue(done.RoomsRoomTypeHead.isDisplayed());
-        }
+            ReusableMethods.jsclick(done.RoomsRoomTypeHead);
 
+        }
+//tc14
         @And("Admin Rooms sayfasinda en sagdaki sutunda View-Edit-Delete seceneklerini dogrular")
         public void adminRoomsSayfasindaEnSagdakiSutundaViewEditDeleteSecenekleriniDogrular () {
-            Assert.assertTrue(done.RoomsWiewEditDeleteButtonlari.isDisplayed());
+            Assert.assertTrue(done.RoomsWiewEditDeleteButtonlari.isEnabled());
 
         }
 
         @And("Admin mevcut bir oda secer ve onun Edit secenegine tiklar")
         public void adminMevcutBirOdaSecerVeOnunEditSecenegineTiklar () {
-            done.RoomsTestHastasi.click();
+            done.RoomsIDBelirleme.click();
+            ReusableMethods.waitFor(1);
             done.RoomsEditButton.click();
         }
 
         @And("Admin oda bilgilerinde guncelleme yapar")
         public void adminOdaBilgilerindeGuncellemeYapar () {
-            Assert.assertTrue(done.RoomsCreateEditSayfasi.isDisplayed());
+            Assert.assertTrue(done.RoomsCreateEditSayfasi.isEnabled());
             actions.sendKeys(Keys.PAGE_DOWN).perform();
-            done.roomPriceBox.sendKeys("1000" + Keys.ENTER);
+            done.roomPriceBox.sendKeys(faker.number().digits(3));
         }
 
         @And("Admin Save butonuna tiklar")
         public void adminSaveButonunaTiklar () {
-            done.roomSaveButton.click();
+          ReusableMethods.jsclick(done.roomSaveButton);
         }
 
         @And("Admin guncelleme yapildi onay mesajini goruntuler")
         public void adminGuncellemeYapildiOnayMesajiniGoruntuler () {
-            //mesajı lovate edemiyorum
+            Assert.assertTrue(done.updatedRoomOnayMessage.isEnabled());
+
         }
 
         @And("Admin mevcut bir oda secer ve onun Delete secenegine tiklar")
         public void adminMevcutBirOdaSecerVeOnunDeleteSecenegineTiklar () {
-            done.RoomsTestHastasi.click();
+            done.RoomsIDBelirleme.click();
             done.RoomsDeleteButton.click();
         }
 
-        @And("Admin silme onay mesajini dogrular")
-        public void adminSilmeOnayMesajiniDogrular () {
-            //hata var
-        }
 
-//TC07
-    @And("Admin Status seceneginin Chexbox ini secili degilse secer")
-    public void adminStatusSecenegininChexboxIniSeciliDegilseSecer() {
-        done.roomStatusSecme.isSelected();
-        ReusableMethods.waitFor(2);
+
+
+    @And("Admin Room number-RoomType-Status-Price seceneklerini gecerli datalar ile doldurur")
+    public void adminRoomNumberRoomTypeStatusPriceSecenekleriniGecerliDatalarIleDoldurur() {
+        done.roomNumberBox.sendKeys(faker.number().digits(7));
+        ReusableMethods.waitFor(1);
         ReusableMethods.jsclick(done.roomStatusSecme);
+        ReusableMethods.waitFor(1);
+        done.roomPriceBox.sendKeys(faker.number().digits(3));
+
+
+    }
+
+    @And("Admin oda silme onay mesajini dogrular")
+    public void adminOdaSilmeOnayMesajiniDogrular() {
+        Assert.assertTrue(done.OdaSilmeOnayMessage.isEnabled());
+
+}
+
+    @And("Admin oda bilgilerini girer")
+    public void adminOdaBilgileriniGirer() {
+        done.roomNumberBox.sendKeys(faker.number().digits(7));
+        ReusableMethods.waitFor(1);
+        ReusableMethods.jsclick(done.roomStatusSecme);
+        ReusableMethods.waitFor(1);
+        done.roomPriceBox.sendKeys(faker.number().digits(3));
+        done.roomDesciriptionsBox.sendKeys("team08");
+        ReusableMethods.waitFor(1);
+        actions.sendKeys(Keys.PAGE_DOWN);
+
+
+    }
+
+    @And("Admin save butonuna tiklar")
+    public void adminsaveButonunaTiklar() {
+        ReusableMethods.jsclick(done.roomSaveButton);
+    }
+
+    @And("Admin Confirm Delete operation ekraninda Delete butonuna tiklar")
+    public void adminConfirmDeleteOperationEkranindaDeleteButonunaTiklar() {
+        done.AdminRoomConfirmDeleteButton.click();
     }
 }
