@@ -25,6 +25,7 @@ public class US_016_dbRoom {
     @When("Admin databseden ID si belirtilen odayi cagirir <query>")
     public void adminDatabsedenIDSiBelirtilenOdayiCagirirQuery() {
         actualData = getRowMap("select * from public.room where id=360776");
+        System.out.println("actualData = " + actualData);
 
     }
 
@@ -38,7 +39,7 @@ public class US_016_dbRoom {
         expectedData.put("room_type", "TWIN");
         expectedData.put("status", true);
 
-        System.out.println("ED" + expectedData);
+        System.out.println("expectedData = " + expectedData);
     }
 
     @Then("Admin databaseden gelen oda bilgilerini dogrular")
@@ -54,7 +55,8 @@ public class US_016_dbRoom {
     }
 
     @And("Admin databse ile baglantısını kapatır")
-    public void adminDatabseIleBaglantısınıKapatır() {
+    public void adminDatabseileBaglantisiniKapatir() {
+        
         DatabaseUtility.closeConnection();
     }
 
