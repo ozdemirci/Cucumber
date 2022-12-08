@@ -1,12 +1,12 @@
 @US_16_DB
 Feature: Oda bilgilerini DB ile dogrulama
 
- Scenario Outline:oda bilgileri database testi
-   Given Admin baglanti kurar
-   When Admin olusturulan oda bilgilerini db den alir "<query>" ve "<columnName>"
-  Then Kullanici bilgilerini dogrular
+  Scenario: Oda bilgilerini DB ile dogrulama
+    Given Admin medunna database baglanir
+    When Admin databseden ID si belirtilen odayi cagirir <query>
+    Then Admin expectedData larini olusturur
+    Then Admin databaseden gelen oda bilgilerini dogrular
+    And Admin databse ile baglantısını kapatır
 
 
-   Examples:
-     |query|columnName|
-     |SELECT * FROM|id|
+
