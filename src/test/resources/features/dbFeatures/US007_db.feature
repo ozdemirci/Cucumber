@@ -1,5 +1,5 @@
-@DB_US007
-Feature
+@US007db
+Feature: Db test
 
 
   Scenario: DB kullanarak randevular doğrulanabilmelidir
