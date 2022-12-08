@@ -17,7 +17,7 @@ public class US_016 {
     public void admin_oda_olusturmak_icin_post_request_gonderir() {
         spec.pathParams("bir", "api", "iki", "rooms");
 
-        //Room data olusturma
+        // Room data olusturma
 
         roomOlustur.setRoomNumber(3259884);
         roomOlustur.setRoomType("DELUXE");
