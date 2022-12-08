@@ -29,7 +29,7 @@ expectedData.put("rememberMe","true" );
         spec.pathParams("ilk", "api", "iki" , "authenticate");
         //Send the request and get the response / Request gonder  response elde et
         Response response    = given().spec(spec).contentType(ContentType.JSON).body(data).when().post("/{ilk}/{iki}");
-//        response.prettyPrint();
+ //        response.prettyPrint();
         JsonPath json = response.jsonPath();
         System.out.println("token : " +json.getString("id_token"));
         return  json.getString("id_token");
