@@ -6,15 +6,6 @@ import org.junit.runner.RunWith;
 
 
 @RunWith(Cucumber.class)
-@CucumberOptions (
-        features="src/test/resources/features",
-        glue="stepDefinitions",
-        tags="@US_027_TC03",
-        dryRun= false
-)
-
-
-@RunWith(Cucumber.class)
 @CucumberOptions(
         plugin = {
                 "pretty",
@@ -25,7 +16,7 @@ import org.junit.runner.RunWith;
         },
         features = "src/test/resources/features",
         glue = "stepDefinitions",
-        tags = "@US15",
+        tags = " @US_028_TC03_Api",
         dryRun =false
 )
 public class Runner {

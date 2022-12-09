@@ -1,5 +1,8 @@
 package pojos;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Data {
     private String createdBy;
     private String createdDate;
@@ -12,7 +15,7 @@ public class Data {
     private String bloodGroup;
     private String adress;
     private String description;
-    private User user;
+    private User_Staff userStaff;
     private Country country;
     private Cstate cstate;
 
@@ -33,13 +36,13 @@ public class Data {
                 ", bloodGroup='" + bloodGroup + '\'' +
                 ", adress='" + adress + '\'' +
                 ", description='" + description + '\'' +
-                ", user=" + user +
+                ", user=" + userStaff +
                 ", country=" + country +
                 ", cstate=" + cstate +
                 '}';
     }
 
-    public Data(String createdBy, String createdDate, Integer id, String firstName, String lastName, String birthDate, String phone, String gender, String bloodGroup, String adress, String description, User user, Country country, Cstate cstate) {
+    public Data(String createdBy, String createdDate, Integer id, String firstName, String lastName, String birthDate, String phone, String gender, String bloodGroup, String adress, String description, User_Staff userStaff, Country country, Cstate cstate) {
         this.createdBy = createdBy;
         this.createdDate = createdDate;
         this.id = id;
@@ -51,7 +54,7 @@ public class Data {
         this.bloodGroup = bloodGroup;
         this.adress = adress;
         this.description = description;
-        this.user = user;
+        this.userStaff = userStaff;
         this.country = country;
         this.cstate = cstate;
     }
@@ -122,11 +125,11 @@ public class Data {
     public void setDescription(String description) {
         this.description = description;
     }
-    public User getUser() {
-        return user;
+    public User_Staff getUser() {
+        return userStaff;
     }
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(User_Staff userStaff) {
+        this.userStaff = userStaff;
     }
     public Country getCountry() {
         return country;
