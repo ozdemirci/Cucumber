@@ -15,12 +15,15 @@ public class EsraPage {
     //US007
     @FindBy(id = "account-menu")
     public WebElement accountMenu;
+
     @FindBy(xpath = "//*[text()='Sign in']")
     public WebElement signIn;
     @FindBy(xpath = "//input[@name='username']")
     public WebElement patientusername;
+
     @FindBy(xpath = "//input[@name='password']")
     public WebElement patientpassword;
+
     @FindBy(xpath = "//*[@id='entity-menu']/a")
     public WebElement mypagespatient;
     @FindBy(xpath = "//span[normalize-space()='Make an Appointment']")
@@ -73,6 +76,23 @@ public class EsraPage {
     @FindBy(xpath = "//*[@id=\"save-entity\"]")
     public WebElement saveButton;
 
-   //@FindBy(xpath = "//span[text()='Sign out']")
-    //public WebElement signout;
+    //US08
+    @FindBy(xpath = "//input[@name='username']")
+    public WebElement usernameAshley;
+    @FindBy(xpath = "//input[@name='password']")
+    public WebElement passwordAshley;
+
+    @FindBy(xpath = "//span[normalize-space()='ashley wilkes']")  public WebElement profilMenu;
+    @FindBy(xpath = "//*[text()='Password']")  public WebElement passwordButton;
+    @FindBy(xpath = "//input[@name=\"currentPassword\"]")  public WebElement currentPassword;
+    @FindBy(xpath = "//input[@name=\"newPassword\"]")  public WebElement newPassword;
+    @FindBy(xpath = "//input[@name=\"confirmPassword\"]") public WebElement comfirmPasswords;
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div[1]") public WebElement succesNewButton;
+    @FindBy(xpath = "//*[@id=\"strengthBar\"]/li[4]")  public WebElement passStrength4;
+    @FindBy(xpath = " //*[@id=\"strengthBar\"]/li[2]")  public WebElement passStrength2;
+    @FindBy(xpath = " //*[@id=\"strengthBar\"]/li[5]")  public WebElement passStrength5;
+    @FindBy(xpath = " //*[@id=\"strengthBar\"]/li[1]")  public WebElement passStrength1;
+    @FindBy(xpath = " //*[@id=\"password-form\"]/button")  public WebElement savePasswordButton;
+
+
 }

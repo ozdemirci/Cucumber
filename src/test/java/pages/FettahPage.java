@@ -5,6 +5,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
+import java.util.List;
+
 public class FettahPage {
     public FettahPage() { //Constructor oluşturup public yapmamız gerekir
 
@@ -137,6 +139,73 @@ public class FettahPage {
 
     @FindBy(xpath = "//*[@id='email']")
     public WebElement email;
+
+    @FindBy(xpath = "(//*[text()='Search Patient'])[1]")
+    public WebElement searchPatientText;
+
+    @FindBy(xpath = "//*[@class='form-control']")
+    public WebElement ssnBox;
+
+    @FindBy(xpath = "//table/tbody/tr/td")
+    public List<WebElement> hastaBilgileri;
+
+    @FindBy(xpath = "(//*[text()='Edit'])[1]")
+    public WebElement editButton;
+
+    @FindBy(xpath = "//*[@name='id']")
+    public WebElement idBox;
+
+    @FindBy(xpath ="//*[@name='firstName']" )
+    public WebElement firstNameBox;
+    @FindBy(xpath ="//*[@name='firstName']" )
+    public List<WebElement> firstNameBoxList;
+
+    @FindBy(xpath ="//*[@name='lastName']" )
+    public WebElement lastNameBox;
+
+    @FindBy(xpath ="//*[@name='birthDate']" )
+    public WebElement birthDateBox;
+
+    @FindBy(xpath ="//*[@name='email']" )
+    public WebElement emailBox;
+
+    @FindBy(xpath ="//*[@name='phone']" )
+    public WebElement phoneBox;
+
+    @FindBy(xpath = "//select[@name='gender']")
+    public WebElement genderDropDown;
+
+    @FindBy(xpath = "//select[@name='bloodGroup']")
+    public WebElement bloodGroupDropDown;
+
+    @FindBy(xpath ="//*[@name='adress']" )
+    public WebElement adressBox;
+
+    @FindBy(xpath = "//textarea[@name='description']")
+    public WebElement descriptionTextarea;
+
+    @FindBy(xpath = "//select[@name='user.id']")
+    public WebElement userDropDown;
+
+    @FindBy(xpath = "//select[@id = 'patient-country']")
+    public WebElement countryDropDown;
+
+    @FindBy(xpath = "//select[@id= 'patient-cstate']")
+    public WebElement stateCityDropDown;
+
+    @FindBy(xpath = "//*[text()='Save']")
+    public WebElement saveButton;
+
+    @FindBy(xpath = "//*[@class='btn btn-info']")
+    public WebElement backButton;
+    @FindBy(xpath = "(//table/tbody/tr)[1]/td")
+    public List<WebElement> guncelHastaBilgileri;
+
+    @FindBy(xpath = "//*[text()='Created Date']")
+    public WebElement createDate;
+
+    @FindBy(xpath = "//*[text()='MY PAGES']")
+    public WebElement myPagesDropDown;
 
 
 }
