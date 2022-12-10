@@ -28,6 +28,16 @@ Feature: Admin olarak; Country oluşturma / Okuma ve Silme
     And     Kullanici guncellenen ulke icin actual datayi cagirir
     And     Kullanici guncellenen ulke icin expected data ile actual datayi karsilastirarark dogrulama yapar
 
+    @US_028_TC04_Api
+    Scenario: Kullanici olusturulan ulkeyi silebilmeyi API ile dogrulamalidir
+    Given   Kullanici ulke icin baseUrl'den url getirir
+    Then    Kullanici silinecek olan ulke dogrulamasi yapabilmek icin expected data olusturur
+    And     Kullanici silinecek ulke icin delete request gonderip response alir
+    And     Kullanici silinen Country delete status kod 200 oldugunu dogrular
+    And     Kullanici silinen ulke icina actual datayı cagirir
+    And     Kullanici silinen ulke icin expected data ile actual datayi karsilastirarark dogrulama yapar
+
+
 
 
 
