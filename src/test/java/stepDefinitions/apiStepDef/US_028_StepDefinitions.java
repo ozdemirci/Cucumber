@@ -124,4 +124,31 @@ public class US_028_StepDefinitions extends MedunnaUrl {
     }
 
 
+    @Then("Kullanici silinecek olan ulke dogrulamasi yapabilmek icin expected data olusturur")
+    public void kullaniciSilinecekOlanUlkeDogrulamasiYapabilmekIcinExpectedDataOlusturur() {
+        expectedData=new Country(43952,"Germany");
+        System.out.println("expectedData = " + expectedData);
+    }
+
+    @And("Kullanici silinecek ulke icin delete request gonderip response alir")
+    public void kullaniciSilinecekUlkeIcinDeleteRequestGonderipResponseAlir() {
+        response=given().headers("Authorization","Bearer " +generateToken()).contentType(ContentType.JSON).
+        delete("https://medunna.com/api/countries/80100");
+    }
+
+    @And("Kullanici silinen Country delete status kod {int} oldugunu dogrular")
+    public void kullaniciSilinenCountryDeleteStatusKodOldugunuDogrular(int arg0) {
+        Assert.assertEquals(200,response.getStatusCode());
+    }
+
+    @And("Kullanici silinen ulke icina actual datayı cagirir")
+    public void kullaniciSilinenUlkeIcinaCtualDatayıCagirir() {
+        actualData=response.as(Country.class);
+        System.out.println("actualData = " + actualData);
+    }
+
+    @And("Kullanici silinen ulke icin expected data ile actual datayi karsilastirarark dogrulama yapar")
+    public void kullaniciSilinenUlkeIcinExpectedDataIleActualDatayiKarsilastirararkDogrulamaYapar() {
+        Assert.assertEquals(actualData.getId(),expectedData.getId());
+    }
 }
