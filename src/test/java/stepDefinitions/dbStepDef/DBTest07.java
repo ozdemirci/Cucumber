@@ -43,6 +43,7 @@ public class DBTest07 {
         WriteToTxt.saveAppointmenIds(fileName1,idList);
 
 
+
     }
 
     @And("Esra randevulari dogrular")
