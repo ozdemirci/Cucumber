@@ -1,25 +1,29 @@
 package pojos;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Country {
+public class Cstate {
     private Integer id;
     private String name;
+    private CountryInner country;
 
-    public Country() {
+    public Cstate() {
     }
 
     @Override
     public String toString() {
-        return "Country{" +
+        return "Cstate{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", country=" + country +
                 '}';
     }
 
-    public Country(Integer id, String name) {
+    public Cstate(Integer id, String name, CountryInner country) {
         this.id = id;
         this.name = name;
+        this.country = country;
     }
 
     public Integer getId() {
@@ -34,4 +38,11 @@ public class Country {
     public void setName(String name) {
         this.name = name;
     }
+    public CountryInner getCountry() {
+        return country;
+    }
+    public void setCountry(CountryInner country) {
+        this.country = country;
+    }
 }
+
