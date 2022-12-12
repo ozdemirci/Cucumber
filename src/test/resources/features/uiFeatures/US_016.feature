@@ -1,7 +1,7 @@
 @US16
 Feature: Oda Olusturma / Goruntuleme / Guncelleme /Silme (Admin)
 
-  @US_16_01
+  @US_16_01 @E2E
   Scenario: Admin, yatan hastalar icin yeni oda olusturabilir
     Given Admin medunnaUrl ine gider
     When Admin sag ust kosedeki insan emojisine tiklar

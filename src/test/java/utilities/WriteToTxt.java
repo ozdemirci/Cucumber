@@ -58,6 +58,7 @@ public class WriteToTxt {
             for (int i=0; i< message.size(); i++)
                 writer.append(message.get(i).toString()+",\n");
 
+
             writer.close();
         } catch (IOException e){
         }
