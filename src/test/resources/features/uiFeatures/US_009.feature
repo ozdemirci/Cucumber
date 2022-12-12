@@ -72,4 +72,4 @@ Feature: US_009 Staff (Personel), hasta bilgilerini gorebilmeli,duzenleyebilmeli
       And Personel back tusuna basar
       And Personel Patient SSN box a tiklar ve hasta "111-35-1994" girer
       And Personel hasta bilgilerini sildigini dogrular
-      And Personel sayfayi kapatir
+      #And Personel sayfayi kapatir

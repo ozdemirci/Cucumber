@@ -36,15 +36,15 @@ public class Hooks {
     }
     @Before(value ="@EndTOEnd" )
     public void setUpDatabaseConnection() {
-       // DatabaseUtility.createConnection(ConfigReader.getProperty("database_url"),
-               // ConfigReader.getProperty("database_username"),
-              //  ConfigReader.getProperty("database_password"));
+        // DatabaseUtility.createConnection(ConfigReader.getProperty("database_url"),
+        // ConfigReader.getProperty("database_username"),
+        //  ConfigReader.getProperty("database_password"));
     }
     @Before(order=4, value="@DBtesting" )
     public void beforeDatabase() {
-      //  DatabaseUtility.createConnection(ConfigReader.getProperty("db_credentials_url"),
-              //  ConfigReader.getProperty("db_username"),
-             //   ConfigReader.getProperty("db_password"));
+        //  DatabaseUtility.createConnection(ConfigReader.getProperty("db_credentials_url"),
+        //  ConfigReader.getProperty("db_username"),
+        //   ConfigReader.getProperty("db_password"));
     }
     @After(order=3, value="@UIregistration")
     public void tearDown(Scenario scenario) throws IOException {

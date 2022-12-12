@@ -23,7 +23,7 @@ public class Patient {
     private String email;
     private String description;
     private Country country;
-    private InPatients [] inPatients;
+    private InPatients[] inPatients;
     private State cstate;
 
     public Patient(String createdBy, String createdDate, int id, String firstName, String lastName, String birthDate, String phone, String gender, String bloodGroup, String adress, String email, String description, Country country, InPatients[] inPatients, State cstate) {
@@ -42,6 +42,20 @@ public class Patient {
         this.country = country;
         this.inPatients = inPatients;
         this.cstate = cstate;
+    }
+
+    public Patient(int id, String firstName, String lastName, String birthDate, String phone, String gender, String bloodGroup, String adress, String email, String description, Country country) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+        this.phone = phone;
+        this.gender = gender;
+        this.bloodGroup = bloodGroup;
+        this.adress = adress;
+        this.email = email;
+        this.description = description;
+        this.country = country;
     }
 
     public Patient() {

@@ -1,9 +1,8 @@
 package pojos;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class RoomPost {
+public class RoomPojoPost {
 
     private String description;
     private int price;
@@ -11,7 +10,7 @@ public class RoomPost {
     private String roomType;
     private boolean status;
 
-    public RoomPost(String description, int price, int roomNumber, String roomType, boolean status) {
+    public RoomPojoPost(String description, int price, int roomNumber, String roomType, boolean status) {
         this.description = description;
         this.price = price;
         this.roomNumber = roomNumber;
@@ -19,8 +18,10 @@ public class RoomPost {
         this.status = status;
     }
 
-    public RoomPost() {
+    public RoomPojoPost() {
     }
+
+
 
     public String getDescription() {
         return description;
