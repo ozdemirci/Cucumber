@@ -57,9 +57,10 @@ public class WriteToTxt {
             writer.close();
         } catch (IOException e) {
         }
+    }
 
 
-    public static void saveMessages(String fileName, List<Object> id){
+    public static void saveMessages(String fileName, List<Object> id) {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(fileName,false));
 
