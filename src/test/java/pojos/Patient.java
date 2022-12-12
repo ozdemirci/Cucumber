@@ -44,6 +44,20 @@ public class Patient {
         this.cstate = cstate;
     }
 
+    public Patient(int id, String firstName, String lastName, String birthDate, String phone, String gender, String bloodGroup, String adress, String email, String description, Country country) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+        this.phone = phone;
+        this.gender = gender;
+        this.bloodGroup = bloodGroup;
+        this.adress = adress;
+        this.email = email;
+        this.description = description;
+        this.country = country;
+    }
+
     public Patient() {
     }
 
