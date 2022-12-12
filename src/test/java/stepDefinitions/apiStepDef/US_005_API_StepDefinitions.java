@@ -26,7 +26,6 @@ public class US_005_API_StepDefinitions extends MedunnaUrl {
 
     Physician physicianExpectedData;
 
-    Physician physicianActualData;
 
     Patient patientExpectedData;
 
@@ -34,30 +33,20 @@ public class US_005_API_StepDefinitions extends MedunnaUrl {
 
     InPatients[] inPatientsExpectedData;
 
-    InPatients[] inPatientActualData;
 
     Test[] testExpectedData;
 
-    Test[] testActualData;
 
     Country countryExpectedData;
 
-    Country countryActualData;
 
     CountryInner countryInnerExpectedData;
 
-    CountryInner countryInnerActualData;
 
     Cstate cstateExpectedData;
 
-    Cstate cstateActualData;
-
     State stateExpectedData;
 
-    State stateActualData;
-
-
-    String url;
 
     @Given("User generates token with admin account")
     public void userGeneratesTokenWithAdminAccount() {
@@ -108,7 +97,7 @@ public class US_005_API_StepDefinitions extends MedunnaUrl {
 
 
         patientActualData = response.as(Patient.class);
-        System.out.println("patientActualData = " + patientActualData);
+        System.out.println("patientActualData = " + appointmentsActualData.getPatient());
     }
 
     @And("User verifies the response with the expected data")
