@@ -47,6 +47,9 @@ public class WriteToTxt {
     }
 
 
+    public static void saveMessages(String fileName, List<Object> message){
+=======
+
     public static void saveAppointmenIds(String fileName, List<Object> id) {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, false));
@@ -61,11 +64,12 @@ public class WriteToTxt {
 
 
     public static void saveMessages(String fileName, List<Object> id) {
+
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(fileName,false));
 
-            for (int i=0; i< id.size(); i++)
-                writer.append(id.get(i).toString()+",\n");
+            for (int i=0; i< message.size(); i++)
+                writer.append(message.get(i).toString()+",\n");
 
             writer.close();
         } catch (IOException e){
