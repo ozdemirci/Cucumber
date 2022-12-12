@@ -1,7 +1,8 @@
 Feature:Admin  Oda olusturma ,Goruntuleme , guncelleme ve silme yapabilmeli
+  @E2E
   Scenario: Admin API ile oda olusturur post
     Given  endpointi api "api" ve rooms "rooms" olan uzantiyi ekler
-    Then   bir room olusturur oda tipi "TWIN" oda fiyati 100 oda numarasi 173173258 description "team08"post
+    Then   bir room olusturur oda tipi "TWIN" oda fiyati 100 oda numarasi 21145781 description "team08"post
     And    status kodunun 201 oldugunu dogrular
     And    Odayi okur
 
