@@ -1,4 +1,4 @@
-Feature: US_16 Admin  Oda olusturma ,Goruntuleme , guncelleme ve silme yapabilmeli
+Feature:Admin  Oda olusturma ,Goruntuleme , guncelleme ve silme yapabilmeli
   Scenario: Admin API ile oda olusturur post
     Given  endpointi api "api" ve rooms "rooms" olan uzantiyi ekler
     Then   bir room olusturur oda tipi "TWIN" oda fiyati 100 oda numarasi 173173258 description "team08"post
