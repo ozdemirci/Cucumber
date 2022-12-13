@@ -14,7 +14,7 @@ import java.util.List;
 
 import static utilities.DatabaseUtility.getColumnData;
 
-public class DBTest07 {
+public class US_007_DB_StepDefinitions {
     @Given("Esra database ile baglanti kurar")
     public void esraDatabaseIleBaglantiKurar() {
         DatabaseUtility.createConnection();
@@ -55,6 +55,7 @@ public class DBTest07 {
 
         Assert.assertTrue("id`ler uyusmuyor",actualAppointmentIDs.containsAll(expectedAppointmentIDs));
     }
+
 
 }
 
