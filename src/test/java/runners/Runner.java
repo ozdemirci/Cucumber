@@ -20,7 +20,7 @@ import org.junit.runner.RunWith;
 
 
        
-        tags = "@DB_US027",
+        tags = " @US17_TC001",
 
 
 
